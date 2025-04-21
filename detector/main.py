@@ -6,6 +6,4 @@ app = FastAPI()
 
 @app.on_event("startup")
 def startup_event():
-    thread = threading.Thread(target=start_kafka_consumer)
-    thread.daemon = True
-    thread.start()
+    threading.Thread(target=start_kafka_consumer, daemon=True).start()

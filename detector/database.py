@@ -4,12 +4,12 @@ import os
 
 # --- MongoDB ---
 mongo_client = MongoClient(os.getenv("MONGODB_URI", "mongodb://mongo:27017"))
-db_mongo = mongo_client["caidas"]
-coleccion = db_mongo["eventos"]
+db_mongo = mongo_client["falls"]
+coleccion = db_mongo["events"]
 
-def guardar_evento(data):
+def save_event(data):
     coleccion.insert_one(data)
-    print("💾 Evento guardado en MongoDB")
+    print("💾 Event stored in MongoDB")
 
 # --- InfluxDB ---
 influx_client = InfluxDBClient(
@@ -17,13 +17,13 @@ influx_client = InfluxDBClient(
     port=int(os.getenv("INFLUXDB_PORT", 8086))
 )
 
-influx_db_name = "caidas"
+influx_db_name = "falls"
 influx_client.create_database(influx_db_name)
 influx_client.switch_database(influx_db_name)
 
-def guardar_en_influx(data):
+def save_influx(data):
     punto = [{
-        "measurement": "aceleracion",
+        "measurement": "acceleration_data",
         "tags": {
             "paciente": data["id"]
         },
