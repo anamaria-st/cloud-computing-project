@@ -1,4 +1,5 @@
 from kafka import KafkaConsumer
+from alert import enviar_alerta_sms
 from database import save_event, save_influx
 import json
 import os
@@ -34,3 +35,7 @@ def start_kafka_consumer():
         print(f"📥 Message received: {data}")
         save_event(data)
         save_influx(data)
+        
+        if float(data["acceleration"]) > UMBRAL_CAIDA:
+            print("🚨 Caída detectada, enviando alerta SMS...")
+            enviar_alerta_sms(data["id"], data["acceleration"])
