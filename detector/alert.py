@@ -35,7 +35,7 @@ def enviar_alerta_correo(paciente_id, aceleracion):
     contraseña = os.getenv("EMAIL_PASS")
 
     asunto = "⚠️ Possible Fall Alert"
-    cuerpo = f"Patient {paciente_id} might have fallen. Acceleration: {aceleracion} g."
+    cuerpo = f"Patient: {paciente_id} might have fallen. Acceleration: {aceleracion} g."
 
     mensaje = MIMEMultipart()
     mensaje["From"] = remitente

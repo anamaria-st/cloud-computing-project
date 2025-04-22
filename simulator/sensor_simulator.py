@@ -24,7 +24,7 @@ else:
     exit(1)
 
 while True:
-    if random.random() < 0.05:
+    if random.random() < 0.01:
         aceleracion = round(random.uniform(2.0, 3.0), 2)# fall simulation
     else:
         aceleracion = round(random.uniform(0.2, 1.9), 2)  
