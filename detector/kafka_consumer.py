@@ -38,5 +38,5 @@ def start_kafka_consumer():
         
         if float(data["acceleration"]) > 2.0:
             print("🚨 Fall detected, sending SMS and email alert...")
-            enviar_alerta_correo(data["id"], data["acceleration"])
-            enviar_alerta_sms(data["id"], data["acceleration"])
+            #enviar_alerta_correo(data["id"], data["acceleration"])
+            #enviar_alerta_sms(data["id"], data["acceleration"])
