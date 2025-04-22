@@ -10,7 +10,7 @@ WORKDIR /app
 COPY . /app
 
 # 4. Instala dependencias
-RUN pip install --no-cache-dir fastapi uvicorn kafka-python pymongo influxdb twilio
+RUN pip install --no-cache-dir fastapi uvicorn kafka-python pymongo influxdb twilio python-dotenv
 
 # 5. Da permisos de ejecución al script de arranque
 RUN chmod +x ./entrypoint.sh

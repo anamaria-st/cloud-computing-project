@@ -48,7 +48,8 @@ services:
       - MONGODB_URI=mongodb://mongo:27017
       - INFLUXDB_HOST=influxdb
       - INFLUXDB_PORT=8086
-
+    env_file:
+      - .env
     depends_on:
       - kafka
       - mongo
